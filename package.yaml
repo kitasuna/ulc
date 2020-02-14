@@ -1,0 +1,74 @@
+name:                ulc
+version:             0.1.0.0
+github:              "githubuser/ulc"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2019 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/githubuser/ulc#readme>
+
+ghc-options: -Wall
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Lib
+    - Split.LibSplit
+    - Parser.MyParser
+  dependencies:
+    - split
+    - text
+    - megaparsec
+
+executables:
+  ulc-exe:
+    main:                Main.hs
+    source-dirs:         app
+    other-modules: []
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ulc
+
+  new-exec:
+    main:               NewExec.hs
+    source-dirs:        app
+    other-modules: []
+    dependencies:
+    - ulc
+
+  parse-exec:
+    main:               ParseExec.hs
+    source-dirs:        app
+    other-modules: []
+    dependencies:
+    - ulc
+    - megaparsec
+
+tests:
+  ulc-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - ulc

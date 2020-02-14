@@ -1,0 +1,87 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 23ce0a1f06b5448b1f634be99dde54e93a7e1a70c4e1184f48b322751a48260b
+
+name:           ulc
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/ulc#readme>
+homepage:       https://github.com/githubuser/ulc#readme
+bug-reports:    https://github.com/githubuser/ulc/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2019 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/ulc
+
+library
+  exposed-modules:
+      Lib
+      Split.LibSplit
+      Parser.MyParser
+  other-modules:
+      Paths_ulc
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5
+    , megaparsec
+    , split
+    , text
+  default-language: Haskell2010
+
+executable new-exec
+  main-is: NewExec.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5
+    , ulc
+  default-language: Haskell2010
+
+executable parse-exec
+  main-is: ParseExec.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5
+    , megaparsec
+    , ulc
+  default-language: Haskell2010
+
+executable ulc-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , ulc
+  default-language: Haskell2010
+
+test-suite ulc-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_ulc
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , ulc
+  default-language: Haskell2010
